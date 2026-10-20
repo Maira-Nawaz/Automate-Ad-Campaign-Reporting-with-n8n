@@ -1,0 +1,289 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ce7d3b06-a41c-4357-a06a-dbf4cd7e5b2e",
+              "leftValue": "={{ $json.ctr }}",
+              "rightValue": 0.03,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        464,
+        160
+      ],
+      "id": "380b4fe1-5692-4b95-afa4-861ae7ef8760",
+      "name": "Filter",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1oNu2VfcY-XiYzFyfxoobWrpIQlRoDhAIIglk0qZOvzs",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "id",
+          "value": "gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        80,
+        160
+      ],
+      "id": "b3062909-7154-47ef-b6fc-c7d57688d0eb",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "xz1GtLsa4hYVen6h",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4abca419-693b-4fa1-8909-92f262adf107",
+              "name": "ctr",
+              "value": "={{ $json.clicks / $json.impressions }}\n\n\n",
+              "type": "number"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {
+          "ignoreConversionErrors": false
+        }
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        304,
+        160
+      ],
+      "id": "004275aa-8f80-467e-9a31-c46b58933a4f",
+      "name": "create_ctr"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        976,
+        160
+      ],
+      "id": "2759395e-88b8-4dae-89a0-f476635151d7",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "content": "### Step 1: Load data\n",
+        "height": 368
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "533f8459-98f0-44d0-aeca-680fcf1b0a6d",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "### Step 2: Clean & process data\n",
+        "height": 368,
+        "width": 368,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        256,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "094a5eb8-4072-4c4f-9757-ebbc8ac7fca7",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "### Step 3: Add AI summary\n",
+        "height": 368,
+        "width": 272,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        640,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "4cd509e7-665d-42d7-a8cd-fab90ec61b58",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "### Step 4: Send out report\n",
+        "height": 368,
+        "width": 464,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        928,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "fa22ade7-a357-41d4-a8a1-7476e365eddf",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "sendTo": "example@example.com",
+        "subject": "=Weekly Ad Campaign Report",
+        "message": "=Please find attached the latest report.",
+        "options": {
+          "attachmentsUi": {
+            "attachmentsBinary": [
+              {}
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1168,
+        160
+      ],
+      "id": "36e5b886-9099-4903-b71b-29273550c61b",
+      "name": "Gmail",
+      "webhookId": "928ee1e3-db2c-408c-9ffa-cc1b67fcec5d",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "oEo4VpAlGx4HKhdO",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -144,
+        160
+      ],
+      "id": "eb55665d-a0cd-4143-8701-fb990596b718",
+      "name": "Schedule Trigger"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "create_ctr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "create_ctr": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1feb9ed6-9e67-4371-8fd5-d5e15e5fea85",
+  "meta": {
+    "instanceId": "acc64c07c0847545c58ce97db44c53875fb2b9f1ed44730e9a92f5cf360cc62c"
+  },
+  "id": "wzHCvmiKNOZbZZnX",
+  "tags": []
+}

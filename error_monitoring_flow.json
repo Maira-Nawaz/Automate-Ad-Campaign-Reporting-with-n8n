@@ -1,0 +1,63 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "13fd5f4a-23ec-492a-8d28-72a47dc9ad10",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        640,
+        32
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "example@example.com",
+        "subject": "=⚠️ Workflow Error: {{ $json.workflow.name }}",
+        "message": "=<h2>Workflow Error Alert</h2><p><strong>Workflow:</strong> {{ $json.workflow.name }}</p><p><strong>Execution ID:</strong> {{ $json.execution.id }}</p><p><strong>Error Time:</strong> {{ $json.execution.lastNodeExecuted }}</p><p><strong>Failed Node:</strong> {{ $json.execution.lastNodeExecuted }}</p><p><strong>Error Message:</strong></p><pre>{{ $json.execution.error.message }}</pre><p><a href=\"https://interviewmaster-ai.app.n8n.cloud/workflow/{{ $json.workflow.id }}/executions/{{ $json.execution.id }}\">View Execution Details</a></p>",
+        "options": {}
+      },
+      "id": "17496585-c3d5-4dbe-b5f0-08be61dcbd5e",
+      "name": "Send Error Notification",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        864,
+        32
+      ],
+      "webhookId": "c9cc4181-4f36-41f0-ab17-9be25ec7d18d",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "oEo4VpAlGx4HKhdO",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send Error Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "8714d0d6-2a1c-4c85-90f1-de58ae4ef065",
+  "meta": {
+    "instanceId": "acc64c07c0847545c58ce97db44c53875fb2b9f1ed44730e9a92f5cf360cc62c"
+  },
+  "id": "m8hVck9xY4gCo9I0",
+  "tags": []
+}
