@@ -10,7 +10,7 @@ This project explores how **n8n workflow automation and local AI** can streamlin
 
 ## Workflow Architecture
 
-![n8n Ad Campaign Reporting Workflow](images/workflow.png)
+![n8n Ad Campaign Reporting Workflow](https://github.com/Maira-Nawaz/Automate-Ad-Campaign-Reporting-with-n8n/blob/main/Automate%20Ad%20Campaign%20Reporting%20Workflow.jpg)
 
 **Workflow:** Data Source → Data Transformation → CTR Filtering → AI-Generated Summary → CSV Report → Email Delivery
 
