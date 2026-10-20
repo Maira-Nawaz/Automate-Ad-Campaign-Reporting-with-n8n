@@ -1,0 +1,13 @@
+campaign_id,campaign_name,channel,start_date,end_date,impressions,clicks,conversions,spend_usd,revenue_usd,value_usd
+CMP-001,Spring Brand Awareness,Search,2026-09-01,2026-09-30,12500,210,38,420.0,12,1800.0
+CMP-002,Retargeting - Cart Visitors,Display,2026-09-01,2026-09-30,9800,490,76,310.0,31,2480.0
+CMP-003,Autumn Sale - Prospecting,Social,2026-09-01,2026-09-30,22000,330,41,690.0,18,1260.0
+CMP-004,Newsletter Signup,Search,2026-09-01,2026-09-30,8400,420,91,280.0,55,0.0
+CMP-005,New Product Video,Social,2026-09-01,2026-09-30,31500,252,22,820.0,7,490.0
+CMP-006,Brand Search,Search,2026-09-01,2026-09-30,7600,684,143,190.0,88,5280.0
+CMP-007,Lookalike Audience Test,Social,2026-09-01,2026-09-30,18500,370,44,560.0,16,1120.0
+CMP-008,Display - Broad Audience,Display,2026-09-01,2026-09-30,40200,402,35,950.0,9,630.0
+CMP-009,Webinar Registration,Social,2026-09-01,2026-09-30,11000,550,104,360.0,62,3100.0
+CMP-010,Competitor Keywords,Search,2026-09-01,2026-09-30,14300,286,52,740.0,14,980.0
+CMP-011,Holiday Early Access,Email,2026-09-01,2026-09-30,6200,310,83,90.0,44,2200.0
+CMP-012,Mobile App Install,Social,2026-09-01,2026-09-30,27500,385,29,780.0,11,440.0
